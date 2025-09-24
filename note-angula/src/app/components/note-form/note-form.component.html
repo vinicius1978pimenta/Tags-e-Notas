@@ -1,0 +1,96 @@
+<div class="note-form-container">
+  <!-- Botão de toggle -->
+  <div class="form-toggle">
+    <button class="toggle-btn" (click)="toggleForm()" [class.active]="showForm">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+           stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 4v16m8-8H4"/>
+      </svg>
+      {{ showForm ? 'Fechar Formulário' : 'Nova Nota' }}
+    </button>
+  </div>
+
+  <!-- Formulário expansível -->
+  <div class="form-wrapper" [class.show]="showForm">
+    <div class="form-content">
+      <div class="form-header">
+        <h2>Criar Nova Nota</h2>
+        <p>Adicione título, conteúdo e tags para organizar suas ideias</p>
+      </div>
+
+      <form class="note-form" (ngSubmit)="createNote()">
+        <!-- Título -->
+        <div class="form-group">
+          <label class="form-label">
+            <svg class="label-icon" xmlns="http://www.w3.org/2000/svg" fill="none" 
+                 viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M12 4v16m8-8H4"/>
+            </svg>
+            Título
+          </label>
+          <input [(ngModel)]="title" name="title" type="text" 
+                 placeholder="Digite o título da nota" 
+                 class="form-input" required />
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="form-group">
+          <label class="form-label">
+            <svg class="label-icon" xmlns="http://www.w3.org/2000/svg" fill="none" 
+                 viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            Conteúdo
+          </label>
+          <textarea [(ngModel)]="content" name="content" 
+                    placeholder="Escreva o conteúdo da nota..." 
+                    class="form-textarea"></textarea>
+          <div class="input-info">
+            <span class="char-count">{{ content.length }}/500</span>
+
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="form-group tags-input-container">
+          <label class="form-label">
+            <svg class="label-icon" xmlns="http://www.w3.org/2000/svg" fill="none" 
+                 viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M7 7h10M7 12h8m-8 5h6"/>
+            </svg>
+            Tags
+          </label>
+          <input [(ngModel)]="tags" name="tags" type="text" 
+                 placeholder="Digite tags separadas por vírgula" 
+                 class="form-input" />
+
+          <!-- Preview das tags -->
+          <div class="tags-preview" *ngIf="tags">
+            <div class="preview-label">Preview:</div>
+            <div class="tags-container">
+              <span class="tag-preview" 
+                    *ngFor="let tag of tags.split(',')"
+                    [style.background]="getTagColor(tag)">
+                {{ tag.trim() }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botões -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" (click)="toggleForm()">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Salvar Nota
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

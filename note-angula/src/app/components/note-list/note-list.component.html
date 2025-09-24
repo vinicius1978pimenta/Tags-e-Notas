@@ -1,0 +1,87 @@
+<div class="note-container">
+
+  <!-- Barra de filtros -->
+  <div class="filters">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="onSearchChange()"
+      placeholder="Pesquisar título ou conteúdo..."
+    />
+
+    <select [(ngModel)]="selectedTag" (change)="onTagFilter()">
+      <option value="">Todas as tags</option>
+      <option *ngFor="let tag of allTags" [value]="tag">
+        {{ tag }}
+      </option>
+    </select>
+
+    <button type="button" (click)="clearFilters()">Limpar</button>
+  </div>
+
+  <!-- Lista de notas -->
+  <div *ngIf="isLoading">Carregando notas...</div>
+  <div *ngIf="!isLoading && filteredNotes.length === 0">
+    Nenhuma nota encontrada.
+  </div>
+
+  <div class="note-list">
+    <div
+      class="note-card"
+      *ngFor="let note of filteredNotes"
+      (click)="editNote(note, $event)"
+    >
+      <div class="note-header">
+        <h3>{{ note.title }}</h3>
+        <button
+          type="button"
+          class="delete-btn"
+          (click)="deleteNote(note.id!, $event)"
+        >
+          ✖
+        </button>
+      </div>
+
+      <p>{{ note.content }}</p>
+
+      <div class="tags">
+        <span
+          *ngFor="let tag of note.tags"
+          class="tag"
+          [style.background]="getTagColor(tag)"
+        >
+          {{ tag }}
+        </span>
+      </div>
+
+      <small class="date" *ngIf="note.createdAt">
+        {{ formatDate(note.createdAt) }}
+      </small>
+    </div>
+  </div>
+
+  <!-- Formulário de edição -->
+  <div *ngIf="isEditing" class="edit-form">
+    <h3>Editar Nota</h3>
+
+    <label>
+      Título:
+      <input type="text" [(ngModel)]="title" />
+    </label>
+
+    <label>
+      Conteúdo:
+      <textarea [(ngModel)]="content"></textarea>
+    </label>
+
+    <label>
+      Tags (separadas por vírgula):
+      <input type="text" [(ngModel)]="tags" />
+    </label>
+
+    <div class="actions">
+      <button type="button" (click)="updateNote()">Salvar</button>
+      <button type="button" (click)="clearForm()">Cancelar</button>
+    </div>
+  </div>
+</div>

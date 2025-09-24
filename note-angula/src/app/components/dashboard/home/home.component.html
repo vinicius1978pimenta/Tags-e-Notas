@@ -1,0 +1,55 @@
+<div class="home-container">
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-content">
+      <!-- Logo -->
+      <div class="logo-section">
+        <div class="logo">
+          <!-- Ícone de nota com tag -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16v16H4z" /> <!-- quadrado representando a nota -->
+            <path d="M8 8h8v2H8z" /> <!-- linha de título -->
+            <path d="M8 12h6v2H8z" /> <!-- linha de conteúdo -->
+            <path d="M14 14l4 4" /> <!-- linha da tag -->
+            <circle cx="16" cy="16" r="2" /> <!-- bolinha da tag -->
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>Notas com Tags</h1>
+          <p>Organize suas ideias de forma prática</p>
+        </div>
+      </div>
+
+      <!-- Estatísticas -->
+      <div class="header-stats">
+        <div class="stat-item">
+          <div class="stat-number">{{ totalNotes }}</div>
+          <div class="stat-label">Notas</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number">{{ totalTags }}</div>
+          <div class="stat-label">Tags</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="main-content">
+    <!-- Formulário de criação -->
+    <section class="create-section">
+      <app-note-form (noteCreated)="noteList.loadNotes()"></app-note-form>
+    </section>
+
+    <!-- Lista de notas -->
+    <section class="notes-section">
+      <app-note-list #noteList></app-note-list>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>© 2025 - Sistema de Notas com Tags. Todos os direitos reservados.</p>
+  </footer>
+</div>

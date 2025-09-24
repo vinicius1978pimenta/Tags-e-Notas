@@ -1,0 +1,202 @@
+.note-container {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: "Inter", sans-serif;
+  color: #2d3436;
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+
+    input,
+    select {
+      padding: 0.6rem 1rem;
+      border: 1px solid #dfe6e9;
+      border-radius: 10px;
+      outline: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      background: #fff;
+
+      &:focus {
+        border-color: #6c5ce7;
+        box-shadow: 0 0 6px rgba(108, 92, 231, 0.3);
+      }
+    }
+
+    button {
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #6c5ce7;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #5a4bd1;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .note-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+
+    .note-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+      }
+
+      .note-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h3 {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #2d3436;
+          margin: 0;
+        }
+
+        .delete-btn {
+          background: transparent;
+          border: none;
+          font-size: 1.2rem;
+          color: #d63031;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        color: #636e72;
+        flex-grow: 1;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        .tag {
+          padding: 0.25rem 0.6rem;
+          border-radius: 8px;
+          font-size: 0.8rem;
+          font-weight: 500;
+          color: #fff;
+          white-space: nowrap;
+        }
+      }
+
+      .date {
+        font-size: 0.75rem;
+        color: #b2bec3;
+        align-self: flex-end;
+      }
+    }
+  }
+
+  .edit-form {
+    background: #f9f9ff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2d3436;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.9rem;
+      color: #636e72;
+
+      input,
+      textarea {
+        margin-top: 0.4rem;
+        padding: 0.6rem 0.8rem;
+        border-radius: 10px;
+        border: 1px solid #dfe6e9;
+        font-size: 0.95rem;
+        background: #fff;
+        transition: all 0.3s ease;
+
+        &:focus {
+          border-color: #6c5ce7;
+          box-shadow: 0 0 6px rgba(108, 92, 231, 0.3);
+        }
+      }
+
+      textarea {
+        min-height: 80px;
+        resize: vertical;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+
+      button {
+        flex: 1;
+        padding: 0.75rem;
+        border-radius: 10px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:first-child {
+          background: #6c5ce7;
+          color: #fff;
+
+          &:hover {
+            background: #5a4bd1;
+          }
+        }
+
+        &:last-child {
+          background: #dfe6e9;
+          color: #2d3436;
+
+          &:hover {
+            background: #b2bec3;
+          }
+        }
+      }
+    }
+  }
+}
