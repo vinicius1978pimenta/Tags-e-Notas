@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NoteFormComponent } from '../../note-form/note-form.component';
 import { NoteListComponent } from '../../note-list/note-list.component';
 import { Note, NotesService } from '../../../services/notes.service';
+import { NavbarComponent } from '../../navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
-  imports: [NoteFormComponent, NoteListComponent],
+  imports: [NoteFormComponent, NoteListComponent, NavbarComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'] // corrigido
 })

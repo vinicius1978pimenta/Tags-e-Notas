@@ -1,0 +1,234 @@
+:root {
+  --primary-gradient: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  --primary-color: #ff6b35;
+  --primary-dark: #e85a2a;
+  --danger-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9fa;
+}
+
+.navbar-modern {
+  background: white !important;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: translateY(-2px);
+}
+
+.nav-link {
+  color: #64748b !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--primary-color) !important;
+  background: rgba(255, 107, 53, 0.08);
+}
+
+.nav-link.active {
+  color: var(--primary-color) !important;
+  background: rgba(255, 107, 53, 0.1);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background: var(--primary-gradient);
+  border-radius: 10px;
+}
+
+.btn-logout {
+  background: var(--danger-gradient);
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.btn-logout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: 2px solid rgba(255, 107, 53, 0.3);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ff6b35' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Mobile - até 576px */
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+  
+  .nav-link.active::after {
+    display: none;
+  }
+  
+  .btn-logout {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/* Tablets - 577px até 991px */
+@media (min-width: 577px) and (max-width: 991px) {
+  .navbar-brand {
+    font-size: 1.4rem;
+  }
+  
+  .nav-link.active::after {
+    display: none;
+  }
+  
+  .btn-logout {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/* Desktop pequeno - 992px até 1399px */
+@media (min-width: 992px) and (max-width: 1399px) {
+  .container {
+    max-width: 960px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 0.9rem !important;
+    font-size: 0.95rem;
+  }
+}
+
+/* Desktop médio - 1400px até 1919px (Full HD) */
+@media (min-width: 1400px) and (max-width: 1919px) {
+  .container {
+    max-width: 1320px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.6rem;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 1.2rem !important;
+    font-size: 1rem;
+  }
+  
+  .btn-logout {
+    padding: 0.6rem 1.8rem;
+    font-size: 1rem;
+  }
+}
+
+/* Telas grandes - 1920px até 2559px (2K/24 polegadas) */
+@media (min-width: 1920px) and (max-width: 2559px) {
+  .container {
+    max-width: 1600px;
+  }
+  
+  .navbar-modern {
+    padding: 1.2rem 0;
+  }
+  
+  .navbar-brand {
+    font-size: 1.8rem;
+  }
+  
+  .nav-link {
+    padding: 0.6rem 1.5rem !important;
+    font-size: 1.1rem;
+  }
+  
+  .btn-logout {
+    padding: 0.7rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Telas ultra-largas - 2560px+ (4K/27+ polegadas) */
+@media (min-width: 2560px) {
+  .container {
+    max-width: 2000px;
+  }
+  
+  .navbar-modern {
+    padding: 1.5rem 0;
+  }
+  
+  .navbar-brand {
+    font-size: 2rem;
+  }
+  
+  .nav-link {
+    padding: 0.7rem 2rem !important;
+    font-size: 1.2rem;
+  }
+  
+  .btn-logout {
+    padding: 0.8rem 2.5rem;
+    font-size: 1.2rem;
+
+    padding-right: 2rem;
+  }
+}
+/* Faz a navbar ocupar 100% da largura e remove padding do container */
+.navbar-modern .container {
+  max-width: 100% !important;
+  padding-left: 1rem !important;
+  padding-right: 1 !important;
+}
+
+/* Faz os links ficarem à esquerda e o botão à direita sem gaps extras */
+.navbar-modern .navbar-collapse {
+  justify-content: space-between;
+}
+
+/* Remove margin automática da lista de links */
+.navbar-modern .navbar-nav {
+  margin-left: 0 !important;
+}
