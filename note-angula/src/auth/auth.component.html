@@ -1,0 +1,81 @@
+<div class="login-container">
+  <!-- Seção do Formulário (Esquerda) -->
+  <div class="login-form-section">
+    <div class="login-form-wrapper">
+      <div class="logo-area">
+        <h1>Bem-vindo! 👋</h1>
+        <p>Faça login para continuar</p>
+      </div>
+
+      <form #loginForm="ngForm">
+        <div class="form-group">
+          <label>Email</label>
+          <input 
+            [(ngModel)]="email" 
+            name="email"
+            type="email" 
+            required
+            placeholder="seu@email.com"
+            #emailInput="ngModel">
+          <div class="error" *ngIf="emailInput.invalid && emailInput.touched">
+            O email é obrigatório
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Senha</label>
+          <input 
+            [(ngModel)]="password" 
+            name="password"
+            type="password" 
+            required
+            minlength="4"
+            placeholder="••••••••"
+            #passwordInput="ngModel">
+          <div class="error" *ngIf="passwordInput.invalid && passwordInput.touched">
+            A senha é obrigatória (mínimo 4 caracteres)
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button 
+            class="btn btn-secondary" 
+            (click)="cadastrar()"
+            [disabled]="!loginForm.valid">
+            Cadastrar
+          </button>
+
+          <button 
+            class="btn btn-primary" 
+            (click)="logar()"
+            [disabled]="!loginForm.valid">
+            Entrar
+          </button>
+        </div>
+      </form>
+
+      <div class="message-area" [class.info]="message">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção da Imagem (Direita) -->
+  <div class="login-image-section">
+    <div class="image-content">
+      <svg class="illustration" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="50" y="80" width="400" height="280" rx="20" fill="white" fill-opacity="0.95"/>
+        <circle cx="120" cy="150" r="30" fill="#FFE5D9"/>
+        <rect x="170" y="130" width="250" height="15" rx="7" fill="#FFE5D9"/>
+        <rect x="170" y="160" width="200" height="15" rx="7" fill="#FFE5D9"/>
+        <rect x="80" y="220" width="340" height="50" rx="10" fill="#FFE5D9"/>
+        <rect x="80" y="290" width="340" height="50" rx="10" fill="#FF6B35"/>
+        <circle cx="380" cy="100" r="8" fill="white"/>
+        <circle cx="410" cy="90" r="6" fill="white"/>
+      </svg>
+      
+      <h2>Gerencie seus Cards!</h2>
+      <p>Simplifique suas Notas e Tags!</p>
+    </div>
+  </div>
+</div>
