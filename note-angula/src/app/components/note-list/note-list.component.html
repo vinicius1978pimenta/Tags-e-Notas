@@ -61,7 +61,9 @@
   </div>
 
   <!-- Formulário de edição -->
-  <div *ngIf="isEditing" class="edit-form">
+<!-- Modal de Edição -->
+<div *ngIf="isEditing" class="modal-overlay">
+  <div class="modal">
     <h3>Editar Nota</h3>
 
     <label>
@@ -80,8 +82,9 @@
     </label>
 
     <div class="actions">
-      <button type="button" (click)="updateNote()">Salvar</button>
-      <button type="button" (click)="clearForm()">Cancelar</button>
+      <button type="button" class="btn-save" (click)="updateNote()">Salvar</button>
+      <button type="button" class="btn-cancel" (click)="clearForm()">Cancelar</button>
     </div>
   </div>
 </div>
+
