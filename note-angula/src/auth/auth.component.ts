@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { AuthService } from '../app/services/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // ✅ import FormsModule
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
-  imports: [CommonModule, FormsModule],  // ✅ adiciona FormsModule aqui
+  imports: [CommonModule, FormsModule],  
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
-  standalone: true                      // ✅ componente standalone
+  standalone: true                      
 })
 export class AuthComponent {
   email = '';
