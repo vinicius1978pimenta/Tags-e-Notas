@@ -1,6 +1,9 @@
 import { Controller, Get, Post, Body, Param, Delete, Put, Query } from '@nestjs/common';
 import { NotesService } from './notes.service';
+import { UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('notes')
 export class NotesController {
   constructor(private readonly notesService: NotesService) {}
