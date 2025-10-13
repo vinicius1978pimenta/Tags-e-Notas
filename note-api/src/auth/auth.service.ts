@@ -73,6 +73,12 @@ export class AuthService {
      return {
         token,
         refreshToken,
+        user : {
+         id: user.id,
+          name: user.name,
+          email: user.email,
+          
+        },
      };
    }
 }

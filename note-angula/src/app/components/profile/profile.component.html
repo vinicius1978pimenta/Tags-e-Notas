@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+<div class="profile-wrapper">
+    <div class="profile-header">
+      <div class="avatar">
+        <img [src]="user.avatarUrl" alt="Avatar" />
+      </div>
+      <h1>{{ user.name }}</h1>
+      <p>{{ user.email }}</p>
+    </div>
+  
+    <div class="profile-actions">
+      <button class="btn edit-btn">Editar Perfil</button>
+      <button class="btn logout-btn" (click)="logout()">Sair</button>
+    </div>
+  </div>
+  

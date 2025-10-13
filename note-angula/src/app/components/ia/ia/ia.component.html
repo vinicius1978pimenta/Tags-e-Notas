@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div class="chat-container">
+  <div class="chat-header">
+    <h2>🤖 Assistente de IA</h2>
+    <button (click)="clearChat()" class="clear-btn" title="Limpar conversa">
+      🧹 Limpar
+    </button>
+  </div>
+
+  <div class="chat-messages">
+    <div *ngFor="let message of messages" [ngClass]="{'user': message.role === 'user', 'assistant': message.role === 'assistant'}" class="message">
+      <div class="bubble">
+        <p>{{ message.content }}</p>
+        <span class="timestamp">{{ message.timestamp | date:'shortTime' }}</span>
+      </div>
+    </div>
+
+    <div class="loading" *ngIf="isLoading">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">
+    ⚠️ {{ errorMessage }}
+  </div>
+
+  <form class="chat-input" (submit)="sendMessage()" autocomplete="off">
+    <textarea
+      [(ngModel)]="userInput"
+      name="message"
+      rows="1"
+      placeholder="Digite sua mensagem..."
+      (keydown)="handleKeyPress($event)"
+      [disabled]="isLoading"
+    ></textarea>
+    <button type="submit" [disabled]="isLoading || !userInput.trim()">
+      <span *ngIf="!isLoading">Enviar</span>
+      <span *ngIf="isLoading" class="spinner"></span>
+    </button>
+  </form>
+</div>
